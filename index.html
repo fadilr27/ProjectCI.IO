@@ -173,24 +173,22 @@ const blokData = {
     }
 };
 
+            function tampilkanNotifikasi(pesan) {
+            const notifikasi = document.getElementById('notifikasi');
+            notifikasi.textContent = pesan;
+            notifikasi.style.display = 'block';
+            setTimeout(() => {
+                notifikasi.style.display = 'none';
+            }, 3000);
+        }
 
-function tampilkanNotifikasi(pesan) {
-    const notifikasi = document.getElementById('notifikasi');
-    notifikasi.textContent = pesan;
-    notifikasi.style.display = 'block';
-    
-    setTimeout(() => {
-        notifikasi.style.display = 'none';
-    }, 3000); // Sembunyikan setelah 3 detik
-}
-
-function salinTeks(teks) {
-    navigator.clipboard.writeText(teks).then(() => {
-        tampilkanNotifikasi('Teks berhasil disalin!');
-    }, () => {
-        tampilkanNotifikasi('Gagal menyalin teks.');
-    });
-}
+        function salinTeks(teks) {
+            navigator.clipboard.writeText(teks).then(() => {
+                tampilkanNotifikasi('Teks berhasil disalin ke clipboard!');
+            }, () => {
+                tampilkanNotifikasi('Gagal menyalin teks. Mohon coba lagi!');
+            });
+        }
 
 
 document.getElementById('divisi').addEventListener('change', function () {
